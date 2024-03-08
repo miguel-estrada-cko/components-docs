@@ -1,0 +1,92 @@
+module.exports = {
+    uk: {
+        name: '🇬🇧 United Kingdom',
+        value: 'GB',
+        locale: 'en',
+        currency: 'GBP',
+    },
+    us: {
+        name: '🇺🇸 United States',
+        value: 'US',
+        locale: 'en',
+        currency: 'USD',
+    },
+    at: {
+        name: '🇦🇹 Austria',
+        value: 'AT',
+        locale: 'en',
+        currency: 'EUR',
+    },
+    be: {
+        name: '🇧🇪 Belgium',
+        value: 'BE',
+        locale: 'en',
+        currency: 'EUR',
+    },
+    cn: {
+        name: '🇨🇳 China',
+        value: 'CN',
+        locale: 'zh',
+        currency: 'CNY',
+    },
+    de: {
+        name: '🇩🇪 Germany',
+        value: 'DE',
+        locale: 'de',
+        currency: 'EUR',
+    },
+    fr: {
+        name: '🇫🇷 France',
+        value: 'FR',
+        locale: 'fr',
+        currency: 'EUR',
+    },
+    it: {
+        name: '🇮🇹 Italy',
+        value: 'IT',
+        locale: 'it',
+        currency: 'EUR',
+    },
+    kw: {
+        name: '🇰🇼 Kuwait',
+        value: 'KW',
+        locale: 'it',
+        currency: 'KWD',
+    },
+    nl: {
+        name: '🇳🇱 Netherlands',
+        value: 'NL',
+        locale: 'itnl',
+        currency: 'EUR',
+    },
+    pt: {
+        name: '🇵🇹 Portugal',
+        value: 'PT',
+        locale: 'pt',
+        currency: 'EUR',
+    },
+    pl: {
+        name: '🇵🇱 Poland',
+        value: 'PL',
+        locale: 'en',
+        currency: 'EUR',
+    },
+    sa: {
+        name: '🇸🇦 Saudi Arabia',
+        value: 'AR',
+        locale: 'ar',
+        currency: 'SAR',
+    },
+    es: {
+        name: '🇪🇸 Spain',
+        value: 'ES',
+        locale: 'es',
+        currency: 'EUR',
+    },
+    vi: {
+        name: '🇻🇳 Vietnam',
+        value: 'VI',
+        locale: 'vi',
+        currency: 'VND',
+    },
+}

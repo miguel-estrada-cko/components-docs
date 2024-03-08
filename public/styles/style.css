@@ -1,0 +1,38 @@
+/**
+Checkout
+
+Blue: rgb(24 106 255)
+*/
+
+body {
+  padding: 1em;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(232 230 230);
+}
+
+a {
+  color: #00B7FF;
+}
+
+.btn-primary {
+  background-color: rgb(24 106 255);
+}
+
+#components-wrapper {
+
+  padding: 4em 2em;
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+#components-wrapper #payment-form {
+  width: 550px;
+}
+
+#components-disclaimer {
+  padding: 1em;
+  text-align: center;
+  font-size: .9em;
+}
