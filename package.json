@@ -2,6 +2,14 @@
   "name": "components-demo",
   "version": "0.0.0",
   "private": true,
+  "contributors": [
+    {
+      "name": "Miguel Estrada"
+    },
+    {
+      "name": "François Falconet"
+    }
+  ],
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www"
