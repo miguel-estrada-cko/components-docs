@@ -39,13 +39,6 @@ module.exports = {
         value: 'DE',
         locale: 'de',
         currency: 'EUR',
-        shipping: {},
-    },
-    fr: {
-        name: '🇫🇷 France',
-        value: 'FR',
-        locale: 'fr',
-        currency: 'EUR',
         shipping: {
             address: {
                 city: "Berlin",
@@ -53,6 +46,13 @@ module.exports = {
                 country: "DE"
             }
         },
+    },
+    fr: {
+        name: '🇫🇷 France',
+        value: 'FR',
+        locale: 'fr',
+        currency: 'EUR',
+        shipping: {},
     },
     it: {
         name: '🇮🇹 Italy',
