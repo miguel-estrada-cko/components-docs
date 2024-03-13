@@ -15,7 +15,8 @@ const cko = new Checkout(keys.secretKey, {
 router.get('/config', async function (req, res, next) {
   res.send({
     keys: {
-      publicKey: keys.publicKey
+      publicKey: keys.publicKey,
+      processingChannelId: keys.processingChannelId,
     }
   })
 })
@@ -30,16 +31,21 @@ router.post('/session', async function (req, res, next) {
   aspect = aspect in aspects ? aspects[aspect] : aspects.default
   //res.status(422).send( {error: "invalid_country_code"})
 
+  // Generate a unique ID for reference and description
+  const id = Math.random().toString(16).slice(2)
+
   // Request a Payment Session
   const request = {
     amount: 1200,
     currency: region.currency,
-    reference: 'ORD-123A',
+    reference: `CKO-PC-${id}`,
     billing: {
       address: {
         country: region.value,
       }
     },
+    shipping: region.shipping,
+    description: `Components Demo Payment ${id}`,
     customer: {
       name: 'John Smith',
       email: 'john.smith@example.com',
