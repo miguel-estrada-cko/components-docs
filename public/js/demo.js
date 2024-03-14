@@ -3,6 +3,9 @@ import { DemoHandler } from './demo-handler.js'
 const demoHandler = DemoHandler
 demoHandler.init('payments')
 
+var regionValue;
+var aspectValue;
+
 /**
  * Functions
  */
@@ -10,22 +13,41 @@ demoHandler.init('payments')
 // Loads or reloads the componed based on all selectors' values
 const reloadDemo = () => {
   console.log('onSelectorsChange')
-  let region = regionSelectorElement.value
-  let aspect = aspectSelectorElement.value
+  let region = regionValue
+  let aspect = aspectValue
   demoHandler.load({ region, aspect })
 }
 
 /**
  * Selectors
  */
+document.addEventListener("DOMContentLoaded", function() {
+  var dropdownItems = document.getElementsByName('region-selector');
 
-let regionSelectorElement = document.getElementById('region-selector')
-let aspectSelectorElement = document.getElementById('aspect-selector')
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log(event.target.getAttribute('data-value'));
+      regionValue = event.target.getAttribute('data-value');
+      reloadDemo();
+      
+    });
+  });
+});
 
-// Handle selectors changes
-regionSelectorElement.addEventListener('change', reloadDemo)
-aspectSelectorElement.addEventListener('change', reloadDemo)
+document.addEventListener("DOMContentLoaded", function() {
+  var dropdownItems = document.getElementsByName('aspect-selector');
 
+  dropdownItems.forEach(function(item) {
+    item.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log(event.target.getAttribute('data-value'));
+      aspectValue = event.target.getAttribute('data-value');;
+      reloadDemo();
+      
+    });
+  });
+});
 
 /**
  * Success and failure messages

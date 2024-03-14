@@ -3,40 +3,36 @@
 {% block body %}
 	{#<h1>{{title}}</h1><p>Welcome to{{title}}</p>#}
 
-	<div>
-		<div id="components-options" class="row g-2 mb-3">
-			<div class="col-md">
-				<div
-					class="form-floating">
-
-					<!-- Region selector -->
-					<div class="form-floating">
-						<select id="region-selector" class="form-select" aria-label="Floating label select example" data-action="update">
-							{% for key, region in regions %}
-								<option value="{{ key }}">{{ region.name }}</option>
-							{% endfor %}
-							<option disabled></option>
-							<option disabled style="font-size:10px">ℹ️ We support 154 currencies</option>
-						</select>
-						<label for="floatingSelect">Customer location</label>
-					</div>
-
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+			<!-- Region selector -->
+				<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+					Customer location
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdown-region">
+					{% for key, region in regions %}
+							<li><a class="dropdown-item" name="region-selector" href="#" data-value="{{ key }}">{{ region.name }}</a></li>
+					{% endfor %}
+					<li><hr class="dropdown-divider"></li>
+					<p class="px-2 dropdown-item">
+					ℹ️ We support 154 currencies
+					</p>
+				</ul>
 				</div>
 			</div>
-			<div class="col-md">
-				<div
-					class="form-floating">
-
-					<!-- Aspect selector -->
-					<div class="form-floating">
-						<select id="aspect-selector" class="form-select" aria-label="Floating label select example" data-action="update">
-							{% for key, aspect in aspects %}
-								<option value="{{ key }}">{{ aspect.name }}</option>
-							{% endfor %}
-						</select>
-						<label for="floatingSelect">Appearance customisation</label>
-					</div>
-
+			<div class="col-md-6 mt-3 mt-md-0">
+			<!-- Aspect selector -->
+				<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+					Appearance customisation
+				</button>
+				<ul class="dropdown-menu" aria-labelledby="dropdown-aspect">
+					{% for key, aspect in aspects %}
+							<li><a class="dropdown-item" name="aspect-selector" href="#" data-value="{{ key }}">{{ aspect.name }}</a></li>
+					{% endfor %}
+				</ul>
 				</div>
 			</div>
 		</div>
@@ -104,4 +100,7 @@
 
 	<script src="/js/demo.js" type="module"></script>
 	<script src="https://checkout-web-components.checkout.com/index.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 {% endblock %}

@@ -20,7 +20,7 @@ a {
 
 #components-wrapper {
 
-  padding: 4em 2em;
+  padding: 3em 2em;
   display: flex;
   align-content: flex-start;
   flex-direction: column;
@@ -31,6 +31,13 @@ a {
   width: 550px;
 }
 
+.container {
+  width: 550px;
+  margin: auto;
+  padding-right: 0;
+  padding-left: 0;
+}
+
 #components-disclaimer {
   padding: 1em;
   text-align: center;
@@ -39,4 +46,24 @@ a {
 
 #aspect-modal textarea {
   font-size: .8em;
+}
+
+
+.drop-down-selector, .drop-down-selector:hover, .drop-down-selector:focus {
+font-family: "Inter";
+    font-size: 14px;
+    color: black;
+    background-color: #d7d3d3;
+    border: none;
+    font-weight: 600;
+    padding-left: 40px;
+    padding-right: 40px;
+    width: 100%;
+    height: 40px;
+}
+
+.dropdown-item {
+  font-family: "Inter";
+  font-size: 14px;
+    color: black;
 }
