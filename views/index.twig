@@ -4,8 +4,9 @@
 	{#<h1>{{title}}</h1><p>Welcome to{{title}}</p>#}
 
 	<div class="container-sm">
-		<div style="max-width: 550px;margin:0 auto;">
-			<div class="row">
+		<div class="container-wrapper">
+
+			<div class="row demo-options px-3 py-4 mx-0">
 				<div
 					class="col-sm-6">
 
@@ -64,7 +65,7 @@
 				</div>
 			</div>
 
-			<div class="row">
+			<div class="row demo-content">
 				<div class="col">
 
 					<div id="components-wrapper">
@@ -90,52 +91,9 @@
 	<!-- Wallets Disclaimer -->
 	<div id="components-disclaimer" class="fixed-bottom text-secondary">Google Pay and Apple Pay disclaimer here...?</div>
 
+	{% include 'index/modal-success.twig' %}
 
-	<!-- Success Modal -->
-	<div id="success-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content border-0">
-				<div class="modal-header border-0">
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body text-center p-5">
-					This is your success message!
-				</div>
-				<div class="modal-footer border-0 justify-content-center">
-					<button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Try again</button>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Aspect Modal and Data -->
-	{% for key, aspect in aspects %}
-		<a href="#" data-action="aspect" data-aspect-key="{{ key }}" class="d-none">{{ aspect.name }}</a>
-	{% endfor %}
-
-	<script id="aspect-data" type="application/json">
-		{{ aspects|json_encode|raw }}
-	</script>
-
-	<div id="aspect-modal" class="modal fade" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content border-0">
-				<div class="modal-header border-0">
-					<h5 class="modal-title">Modal title</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body px-3 py-0">
-					<p>Copy the following value on the
-						<kbd>appearance</kbd>
-						option:</p>
-					<p>
-						<textarea class="form-control font-monospace" rows="24"></textarea>
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+	{% include 'index/modal-aspect.twig' %}	
 
 	<script src="/js/demo.js" type="module"></script>
 	<script src="https://checkout-web-components.checkout.com/index.js"></script>

@@ -1,0 +1,27 @@
+<!-- Aspect Modal and Data -->
+{% for key, aspect in aspects %}
+	<a href="#" data-action="aspect" data-aspect-key="{{ key }}" class="d-none">{{ aspect.name }}</a>
+{% endfor %}
+
+<script id="aspect-data" type="application/json">
+	{{ aspects|json_encode|raw }}
+</script>
+
+<div id="aspect-modal" class="modal fade" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content border-0">
+			<div class="modal-header border-0">
+				<h5 class="modal-title">Modal title</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body px-3 py-0">
+				<p>Copy the following value on the
+					<kbd>appearance</kbd>
+					option:</p>
+				<p>
+					<textarea class="form-control font-monospace" rows="24"></textarea>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
