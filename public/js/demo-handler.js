@@ -118,30 +118,30 @@ export const DemoHandler = {
       appearance: session.appearance,
 
       onReady: (component) => {
-        console.log('onReady', component)
+        console.log('[Components] onReady', component)
       },
 
       onChange: (component) => {
-        console.log('onChange', component)
+        console.log('[Components] onChange', component)
       },
 
       onSubmit: (component) => {
-        console.log('onSubmit', component)
+        console.log('[Components] onSubmit', component)
       },
 
       handleSubmit: async (component, state) => {
-        console.log('handleSubmit', component, state)
+        console.log('[Components] handleSubmit', component, state)
         this._trigger(this.Events.PaymentSuccess, { type: state.type })
       },
 
       onPaymentCompleted: (component, paymentResponse) => {
-        console.log('onPaymentCompleted', component, paymentResponse)
+        console.log('[Components] onPaymentCompleted', component, paymentResponse)
         this._trigger(this.Events.PaymentSuccess)
         this._instance.unmount()
       },
 
       onError: (component, error) => {
-        console.log('onError', component, error)
+        console.log('[Components] onError', component, error)
         this._trigger(this.Events.PaymentFailure, { error: error })
       },
 

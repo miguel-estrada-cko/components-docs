@@ -6,7 +6,7 @@ Blue: rgb(24 106 255)
 
 body {
   padding: 1em;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Inter";
   background-color: rgb(232 230 230);
 }
 
@@ -19,8 +19,7 @@ a {
 }
 
 #components-wrapper {
-
-  padding: 3em 2em;
+  padding: 3em 0;
   display: flex;
   align-content: flex-start;
   flex-direction: column;
@@ -28,14 +27,8 @@ a {
 }
 
 #components-wrapper #payment-form {
-  width: 550px;
-}
-
-.container {
-  width: 550px;
-  margin: auto;
-  padding-right: 0;
-  padding-left: 0;
+  width: 100%;
+  max-width: 550px;
 }
 
 #components-disclaimer {
@@ -48,22 +41,33 @@ a {
   font-size: .8em;
 }
 
-
-.drop-down-selector, .drop-down-selector:hover, .drop-down-selector:focus {
-font-family: "Inter";
-    font-size: 14px;
-    color: black;
-    background-color: #d7d3d3;
-    border: none;
-    font-weight: 600;
-    padding-left: 40px;
-    padding-right: 40px;
-    width: 100%;
-    height: 40px;
+.drop-down-selector,
+.drop-down-selector:hover,
+.drop-down-selector:focus {
+  font-family: "Inter";
+  font-size: 14px;
+  color: black;
+  background-color: #d7d3d3;
+  border: none;
+  font-weight: 600;
+  padding-left: 40px;
+  padding-right: 40px;
+  width: 100%;
+  height: 40px;
 }
 
 .dropdown-item {
   font-family: "Inter";
   font-size: 14px;
-    color: black;
+  color: black;
+}
+
+.dropdown li a.disabled {
+  white-space: pre-wrap;
+}
+
+.dropdown .dropdown-icon svg {
+  height: 20px;
+  color: rgb(24 106 255);
+  margin: 2px 0 1px;
 }

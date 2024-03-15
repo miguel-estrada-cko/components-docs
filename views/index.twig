@@ -3,54 +3,93 @@
 {% block body %}
 	{#<h1>{{title}}</h1><p>Welcome to{{title}}</p>#}
 
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-			<!-- Region selector -->
-				<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-					Customer location
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdown-region">
-					{% for key, region in regions %}
-							<li><a class="dropdown-item" name="region-selector" href="#" data-value="{{ key }}">{{ region.name }}</a></li>
-					{% endfor %}
-					<li><hr class="dropdown-divider"></li>
-					<p class="px-2 dropdown-item">
-					ℹ️ We support 154 currencies
-					</p>
-				</ul>
+	<div class="container-sm">
+		<div style="max-width: 550px;margin:0 auto;">
+			<div class="row">
+				<div
+					class="col-sm-6">
+
+					<!-- Region selector -->
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+							Customer location
+						</button>
+						<ul class="dropdown-menu w-100 mw-100" aria-labelledby="dropdown-region">
+							{% for key, region in regions %}
+								<li>
+									<a class="dropdown-item" name="region-selector" href="#" data-value="{{ key }}">{{ region.name }}</a>
+								</li>
+							{% endfor %}
+							<li class="clearfix"></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a class="dropdown-item disabled" aria-disabled="true">We support lots of currencies and countries worldwide disclaimer here...</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+				<div
+					class="col-sm-6 mt-3 mt-sm-0">
+
+					<!-- Aspect selector -->
+					<div class="dropdown">
+						<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+							Appearance customisation
+						</button>
+						<ul class="dropdown-menu w-100" aria-labelledby="dropdown-aspect">
+							{% for key, aspect in aspects %}
+								<li>
+									<a class="dropdown-item float-start w-75" name="aspect-selector" href="#" data-value="{{ key }}">{{ aspect.name }}</a>
+									{% if key != 'default' %}
+										<a class="dropdown-icon float-end text-end py-1 pe-3 w-25" href="#" data-action="aspect" data-aspect-key="{{ key }}">
+											{% include "index/icon-copy.twig" %}
+										</a>
+									{% endif %}
+								</li>
+							{% endfor %}
+							<li class="clearfix"></li>
+							<li>
+								<hr class="dropdown-divider">
+							</li>
+							<li>
+								<a class="dropdown-item disabled" aria-disabled="true">Customization for Payment Components disclaimer here...</a>
+							</li>
+						</ul>
+					</div>
+
 				</div>
 			</div>
-			<div class="col-md-6 mt-3 mt-md-0">
-			<!-- Aspect selector -->
-				<div class="dropdown">
-				<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-					Appearance customisation
-				</button>
-				<ul class="dropdown-menu" aria-labelledby="dropdown-aspect">
-					{% for key, aspect in aspects %}
-							<li><a class="dropdown-item" name="aspect-selector" href="#" data-value="{{ key }}">{{ aspect.name }}</a></li>
-					{% endfor %}
-				</ul>
+
+			<div class="row">
+				<div class="col">
+
+					<div id="components-wrapper">
+						<form
+							id="payment-form">
+
+							<!-- Failure Alert -->
+							<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
+
+							<!-- Payment Components -->
+							<div class="payments-container">
+								<div id="payments"></div>
+							</div>
+						</form>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div id="components-wrapper" class="mb-0">
-		<form
-			id="payment-form">
 
-			<!-- Failure Alert -->
-			<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
+	<!-- Wallets Disclaimer -->
+	<div id="components-disclaimer" class="fixed-bottom text-secondary">Google Pay and Apple Pay disclaimer here...?</div>
 
-			<!-- Payment Components -->
-			<div class="payments-container">
-				<div id="payments"></div>
-			</div>
-		</form>
-	</div>
 
 	<!-- Success Modal -->
 	<div id="success-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -69,6 +108,7 @@
 		</div>
 	</div>
 
+
 	<!-- Aspect Modal and Data -->
 	{% for key, aspect in aspects %}
 		<a href="#" data-action="aspect" data-aspect-key="{{ key }}" class="d-none">{{ aspect.name }}</a>
@@ -78,25 +118,24 @@
 		{{ aspects|json_encode|raw }}
 	</script>
 
-	<div id="aspect-modal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div id="aspect-modal" class="modal fade" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content border-0">
 				<div class="modal-header border-0">
 					<h5 class="modal-title">Modal title</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body text-center px-3 py-0">
-					<textarea class="form-control font-monospace" rows="24"></textarea>
-				</div>
-				<div class="modal-footer border-0 justify-content-center">
-					<button type="button" class="btn btn-primary px-5" data-bs-dismiss="modal">Copy to clipboard</button>
+				<div class="modal-body px-3 py-0">
+					<p>Copy the following value on the
+						<kbd>appearance</kbd>
+						option:</p>
+					<p>
+						<textarea class="form-control font-monospace" rows="24"></textarea>
+					</p>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- Wallets Disclaimer -->
-	<div id="components-disclaimer" class="fixed-bottom text-secondary">Google Pay and Apple Pay disclaimer here...?</div>
 
 	<script src="/js/demo.js" type="module"></script>
 	<script src="https://checkout-web-components.checkout.com/index.js"></script>

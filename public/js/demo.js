@@ -3,8 +3,8 @@ import { DemoHandler } from './demo-handler.js'
 const demoHandler = DemoHandler
 demoHandler.init('payments')
 
-var regionValue;
-var aspectValue;
+let region;
+let aspect;
 
 /**
  * Functions
@@ -12,40 +12,30 @@ var aspectValue;
 
 // Loads or reloads the componed based on all selectors' values
 const reloadDemo = () => {
-  console.log('onSelectorsChange')
-  let region = regionValue
-  let aspect = aspectValue
+  console.log(`[Demo] Reload Components: Region=${region} Aspect=${aspect}`)
   demoHandler.load({ region, aspect })
 }
 
 /**
  * Selectors
  */
-document.addEventListener("DOMContentLoaded", function() {
-  var dropdownItems = document.getElementsByName('region-selector');
+document.getElementsByName('region-selector').forEach(function (item) {
+  item.addEventListener('click', function (event) {
+    event.preventDefault()
+    console.log('[Demo] Region Selection Click: ', event.target.getAttribute('data-value'))
+    region = event.target.getAttribute('data-value')
+    document.getElementById('dropdown-region').innerHTML = event.target.innerHTML
+    reloadDemo()
+  })
+})
 
-  dropdownItems.forEach(function(item) {
-    item.addEventListener('click', function(event) {
-      event.preventDefault();
-      console.log(event.target.getAttribute('data-value'));
-      regionValue = event.target.getAttribute('data-value');
-      reloadDemo();
-      
-    });
-  });
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  var dropdownItems = document.getElementsByName('aspect-selector');
-
-  dropdownItems.forEach(function(item) {
-    item.addEventListener('click', function(event) {
-      event.preventDefault();
-      console.log(event.target.getAttribute('data-value'));
-      aspectValue = event.target.getAttribute('data-value');;
-      reloadDemo();
-      
-    });
+document.getElementsByName('aspect-selector').forEach(function (item) {
+  item.addEventListener('click', function (event) {
+    event.preventDefault()
+    console.log('[Demo] Aspect Selection Click: ', event.target.getAttribute('data-value'))
+    aspect = event.target.getAttribute('data-value')
+    document.getElementById('dropdown-aspect').innerHTML = event.target.innerHTML
+    reloadDemo();
   });
 });
 
@@ -60,21 +50,22 @@ let failureAlertElement = document.getElementById('failure-alert')
 // Handle modal closure flow
 successModalElement.addEventListener('hide.bs.modal', reloadDemo)
 
-
 /**
  * Appearance copy&paste modal
  */
 let aspectData = JSON.parse(document.getElementById('aspect-data').textContent)
 let aspectModalElement = document.getElementById('aspect-modal')
 let aspectModal = new bootstrap.Modal(aspectModalElement,)
-
+let aspectModalTextarea = aspectModalElement.querySelector('textarea')
 
 const updateAspectModal = (key) => {
   let aspect = aspectData[key]
   aspectModalElement.querySelector('.modal-title').innerHTML = aspect.name
-  aspectModalElement.querySelector('textarea').value = JSON.stringify(aspect.value, null, 4).replace(/"([^"]+)":/g, '$1:').replace(/\\"/g, "'")
+  aspectModalTextarea.value = JSON.stringify(aspect.value, null, 4).replace(/"([^"]+)":/g, '$1:').replace(/\\"/g, "'")
   aspectModal.show()
 }
+
+aspectModalTextarea.addEventListener('click', (e) => e.target.select())
 
 // Add listener for every data-action=aspect
 // Expecting: data-aspect-name data-aspect-code
@@ -85,15 +76,13 @@ document.querySelectorAll('[data-action="aspect"]').forEach((element, key) => {
   })
 })
 
-//updateAspectModal()
-
 /**
  * Demo events
  */
 
 // Session has been successfully created
 demoHandler.addEventHandler(DemoHandler.Events.SessionSuccess, (e) => {
-  console.log('SessionSuccess', e.type, e.detail)
+  console.log('[Demo]', e.type, e.detail)
 
   // Reset UI messages
   successModal.hide()
@@ -103,12 +92,12 @@ demoHandler.addEventHandler(DemoHandler.Events.SessionSuccess, (e) => {
 
 // Components has been loaded or reloaded
 demoHandler.addEventHandler(DemoHandler.Events.ComponentLoaded, (e) => {
-  console.log('ComponentLoaded', e.type, e.detail)
+  console.log('[Demo]', e.type, e.detail)
 })
 
 // A demo payment attempt has been completed (depends on demo's criteria)
 demoHandler.addEventHandler(DemoHandler.Events.PaymentSuccess, (e) => {
-  console.log('PaymentSuccess', e.type, e.detail)
+  console.log('[Demo]', e.type, e.detail)
 
   // Show success message
   successModal.show()
@@ -116,7 +105,7 @@ demoHandler.addEventHandler(DemoHandler.Events.PaymentSuccess, (e) => {
 
 // A demo payment attempt has failed
 demoHandler.addEventHandler(DemoHandler.Events.PaymentFailure, (e) => {
-  console.log('PaymentFailure', e.type, e.detail)
+  console.log('[Demo]', e.type, e.detail)
 
   // Show failure alert
   failureAlertElement.classList.remove('d-none')
