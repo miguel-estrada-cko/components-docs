@@ -3,100 +3,96 @@
 {% block body %}
 	{#<h1>{{title}}</h1><p>Welcome to{{title}}</p>#}
 
-	<div class="demo-options py-4">
-		<div class="container-fluid p-0">
-			<div
-				class="row">
+	<div class="container-fluid  demo-options py-4">
+		<div
+			class="row">
 
-				<!-- Region selector -->
-				<div class="col-sm-4">
-					<div class="dropdown">
-						<div class="mb-2 text-truncate label">Customer location</div>
-						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-							{{ regions.uk.name }}
-						</button>
-						<ul class="dropdown-menu w-100 mw-100" aria-labelledby="dropdown-region">
-							{% for key, region in regions %}
-								<li>
-									<a class="dropdown-item" name="region-selector" href="#" data-value="{{ key }}">{{ region.name }}</a>
-								</li>
-							{% endfor %}
-							<li class="clearfix"></li>
+			<!-- Region selector -->
+			<div class="col-sm-4">
+				<div class="dropdown">
+					<div class="mb-2 text-truncate label">Customer location</div>
+					<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+						{{ regions.uk.name }}
+					</button>
+					<ul class="dropdown-menu w-100 mw-100" aria-labelledby="dropdown-region">
+						{% for key, region in regions %}
 							<li>
-								<hr class="dropdown-divider">
+								<a class="dropdown-item" name="region-selector" href="#" data-value="{{ key }}">{{ region.name }}</a>
 							</li>
-							<li>
-								<a class="dropdown-item disabled" aria-disabled="true">We support lots of currencies and countries worldwide disclaimer here...</a>
-							</li>
-						</ul>
-					</div>
+						{% endfor %}
+						<li class="clearfix"></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li>
+							<a class="dropdown-item disabled" aria-disabled="true">We support lots of currencies and countries worldwide disclaimer here...</a>
+						</li>
+					</ul>
 				</div>
+			</div>
 
-				<!-- Aspect selector -->
-				<div class="col-sm-4 mt-3 mt-sm-0">
-					<div class="dropdown">
-						<div class="mb-2 text-truncate label">Appearance customisation</div>
-						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-							{{ aspects.default.name }}
-						</button>
-						<ul class="dropdown-menu w-100" aria-labelledby="dropdown-aspect">
-							{% for key, aspect in aspects %}
-								<li>
-									<a class="dropdown-item float-start w-75" name="aspect-selector" href="#" data-value="{{ key }}">{{ aspect.name }}</a>
-									{% if key != 'default' %}
-										<a class="dropdown-icon float-end text-end py-1 pe-3 w-25" href="#" data-action="aspect" data-aspect-key="{{ key }}">
-											{% include "index/icon-copy.twig" %}
-										</a>
-									{% endif %}
-								</li>
-							{% endfor %}
-							<li class="clearfix"></li>
+			<!-- Aspect selector -->
+			<div class="col-sm-4 mt-3 mt-sm-0">
+				<div class="dropdown">
+					<div class="mb-2 text-truncate label">Appearance customisation</div>
+					<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+						{{ aspects.default.name }}
+					</button>
+					<ul class="dropdown-menu w-100" aria-labelledby="dropdown-aspect">
+						{% for key, aspect in aspects %}
 							<li>
-								<hr class="dropdown-divider">
+								<a class="dropdown-item float-start w-75" name="aspect-selector" href="#" data-value="{{ key }}">{{ aspect.name }}</a>
+								{% if key != 'default' %}
+									<a class="dropdown-icon float-end text-end py-1 pe-3 w-25" href="#" data-action="aspect" data-aspect-key="{{ key }}">
+										{% include "index/icon-copy.twig" %}
+									</a>
+								{% endif %}
 							</li>
-							<li>
-								<a class="dropdown-item disabled" aria-disabled="true">Customization for Payment Components disclaimer here...</a>
-							</li>
-						</ul>
-					</div>
+						{% endfor %}
+						<li class="clearfix"></li>
+						<li>
+							<hr class="dropdown-divider">
+						</li>
+						<li>
+							<a class="dropdown-item disabled" aria-disabled="true">Customization for Payment Components disclaimer here...</a>
+						</li>
+					</ul>
 				</div>
+			</div>
 
-				<!-- Device selector -->
-				<div class="col-sm-4 mt-3 mt-sm-0">
-					<div class="dropdown">
-						<div class="mb-2 text-truncate label">Device size</div>
-						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-device" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-							{{ devices.desktop.name }}
-						</button>
-						<ul class="dropdown-menu w-100" aria-labelledby="dropdown-device">
-							{% for key, device in devices %}
-								<li>
-									<a class="dropdown-item" name="device-selector" href="#" data-value="{{ device.class }}">{{ device.name }}</a>
-								</li>
-							{% endfor %}
-						</ul>
-					</div>
+			<!-- Device selector -->
+			<div class="col-sm-4 mt-3 mt-sm-0">
+				<div class="dropdown">
+					<div class="mb-2 text-truncate label">Device size</div>
+					<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-device" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+						{{ devices.desktop.name }}
+					</button>
+					<ul class="dropdown-menu w-100" aria-labelledby="dropdown-device">
+						{% for key, device in devices %}
+							<li>
+								<a class="dropdown-item" name="device-selector" href="#" data-value="{{ device.class }}">{{ device.name }}</a>
+							</li>
+						{% endfor %}
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="demo-content py-2">
-		<div class="container-sm">
-			<div id="components-wrapper" class="device-desktop">
-				<form
-					id="payment-form">
+	<div class="container-fluid demo-content py-2">
+		<div id="components-wrapper" class="device-desktop">
+			<form
+				id="payment-form">
 
-					<!-- Failure Alert -->
-					<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
+				<!-- Failure Alert -->
+				<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
 
-					<!-- Payment Components -->
-					<div class="payments-container">
-						<div id="payments"></div>
-					</div>
+				<!-- Payment Components -->
+				<div class="payments-container">
+					<div id="payments"></div>
+				</div>
 
-				</form>
-			</div>
+			</form>
 		</div>
 	</div>
 
