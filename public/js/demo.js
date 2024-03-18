@@ -49,7 +49,7 @@ document.getElementsByName('device-selector').forEach(function (item) {
 
     componentsWrapperElement.classList.forEach((name) => name.startsWith('device-') ? componentsWrapperElement.classList.remove(name) : null)
     componentsWrapperElement.classList.add(device)
-    //document.getElementById('dropdown-aspect').innerHTML = event.target.innerHTML
+    document.getElementById('dropdown-device').innerHTML = event.target.innerHTML
     //reloadDemo();
   });
 });
