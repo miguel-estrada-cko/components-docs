@@ -3,17 +3,17 @@
 {% block body %}
 	{#<h1>{{title}}</h1><p>Welcome to{{title}}</p>#}
 
-	<div class="container-sm">
-		<div class="container-wrapper">
+	<div class="demo-options py-4">
+		<div class="container-sm">
+			<div
+				class="row">
 
-			<div class="row demo-options px-3 py-4 mx-0">
-				<div
-					class="col-sm-6">
-
-					<!-- Region selector -->
+				<!-- Region selector -->
+				<div class="col-sm-4">
 					<div class="dropdown">
-						<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-							Customer location
+						<div class="mb-2 text-truncate">Customer location</div>
+						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-region" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+							{{ regions.uk.name }}
 						</button>
 						<ul class="dropdown-menu w-100 mw-100" aria-labelledby="dropdown-region">
 							{% for key, region in regions %}
@@ -30,16 +30,14 @@
 							</li>
 						</ul>
 					</div>
-
 				</div>
 
-				<div
-					class="col-sm-6 mt-3 mt-sm-0">
-
-					<!-- Aspect selector -->
+				<!-- Aspect selector -->
+				<div class="col-sm-4 mt-3 mt-sm-0">
 					<div class="dropdown">
-						<button class="btn btn-secondary dropdown-toggle drop-down-selector" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
-							Appearance customisation
+						<div class="mb-2 text-truncate">Appearance customisation</div>
+						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-aspect" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+							{{ aspects.default.name }}
 						</button>
 						<ul class="dropdown-menu w-100" aria-labelledby="dropdown-aspect">
 							{% for key, aspect in aspects %}
@@ -61,39 +59,53 @@
 							</li>
 						</ul>
 					</div>
-
 				</div>
-			</div>
 
-			<div class="row demo-content">
-				<div class="col">
-
-					<div id="components-wrapper">
-						<form
-							id="payment-form">
-
-							<!-- Failure Alert -->
-							<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
-
-							<!-- Payment Components -->
-							<div class="payments-container">
-								<div id="payments"></div>
-							</div>
-						</form>
+				<!-- Device selector -->
+				<div class="col-sm-4 mt-3 mt-sm-0">
+					<div class="dropdown">
+						<div class="mb-2 text-truncate">Size</div>
+						<button class="btn btn-secondary dropdown-toggle drop-down-selector text-truncate" type="button" id="dropdown-device" data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+							{{ devices.desktop.name }}
+						</button>
+						<ul class="dropdown-menu w-100" aria-labelledby="dropdown-device">
+							{% for key, device in devices %}
+								<li>
+									<a class="dropdown-item" name="device-selector" href="#" data-value="{{ device.class }}">{{ device.name }}</a>
+								</li>
+							{% endfor %}
+						</ul>
 					</div>
-
 				</div>
 			</div>
 		</div>
 	</div>
 
+	<div class="demo-content">
+		<div class="container-sm">
+			<div id="components-wrapper" class="device-desktop">
+				<form
+					id="payment-form">
+
+					<!-- Failure Alert -->
+					<div id="failure-alert" class="alert alert-danger d-none" role="alert"></div>
+
+					<!-- Payment Components -->
+					<div class="payments-container">
+						<div id="payments"></div>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
 
 	<!-- Wallets Disclaimer -->
 	<div id="components-disclaimer" class="fixed-bottom text-secondary">Google Pay and Apple Pay disclaimer here...?</div>
 
 	{% include 'index/modal-success.twig' %}
 
-	{% include 'index/modal-aspect.twig' %}	
+	{% include 'index/modal-aspect.twig' %}
 
 	<script src="/js/demo.js" type="module"></script>
 	<script src="https://checkout-web-components.checkout.com/index.js"></script>

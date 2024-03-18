@@ -5,10 +5,8 @@ Blue: rgb(24 106 255)
 */
 
 body {
-  padding: 1em;
   font: 14px "Inter";
   -webkit-font-smoothing: antialiased;
-  /*background-color: rgb(232 230 230);*/
 }
 
 a {
@@ -27,27 +25,30 @@ a {
   background-color: rgb(24 106 255);
 }
 
-.container-wrapper {
-  margin: 0 auto;
-  max-width: 550px;
-}
-
 .demo-options {
-  background: #272932;
-  border-radius: 1em;
+  border-bottom: 1px solid rgb(232 230 230);
 }
 
-#components-wrapper {
+.demo-content {}
+
+.demo-content #components-wrapper {
   padding: 2em 0;
   display: flex;
-  align-content: flex-start;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 }
 
-#components-wrapper #payment-form {
-  width: 100%;
+.demo-content #components-wrapper.device-desktop {
   max-width: 550px;
+}
+
+.demo-content #components-wrapper.device-mobile {
+  max-width: 320px;
+}
+
+.demo-content #payment-form {
+  width: 100%;
 }
 
 #components-disclaimer {

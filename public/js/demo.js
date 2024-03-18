@@ -5,6 +5,7 @@ demoHandler.init('payments')
 
 let region;
 let aspect;
+let device;
 
 /**
  * Functions
@@ -22,7 +23,7 @@ const reloadDemo = () => {
 document.getElementsByName('region-selector').forEach(function (item) {
   item.addEventListener('click', function (event) {
     event.preventDefault()
-    console.log('[Demo] Region Selection Click: ', event.target.getAttribute('data-value'))
+    console.log(`[Demo] Region Selection Click: ${event.target.getAttribute('data-value')}`)
     region = event.target.getAttribute('data-value')
     document.getElementById('dropdown-region').innerHTML = event.target.innerHTML
     reloadDemo()
@@ -32,10 +33,24 @@ document.getElementsByName('region-selector').forEach(function (item) {
 document.getElementsByName('aspect-selector').forEach(function (item) {
   item.addEventListener('click', function (event) {
     event.preventDefault()
-    console.log('[Demo] Aspect Selection Click: ', event.target.getAttribute('data-value'))
+    console.log(`[Demo] Aspect Selection Click: ${event.target.getAttribute('data-value')}`)
     aspect = event.target.getAttribute('data-value')
     document.getElementById('dropdown-aspect').innerHTML = event.target.innerHTML
     reloadDemo();
+  });
+});
+
+const componentsWrapperElement = document.getElementById('components-wrapper')
+document.getElementsByName('device-selector').forEach(function (item) {
+  item.addEventListener('click', function (event) {
+    event.preventDefault()
+    console.log(`[Demo] Device Selection Click: ${event.target.getAttribute('data-value')}`)
+    device = event.target.getAttribute('data-value')
+
+    componentsWrapperElement.classList.forEach((name) => name.startsWith('device-') ? componentsWrapperElement.classList.remove(name) : null)
+    componentsWrapperElement.classList.add(device)
+    //document.getElementById('dropdown-aspect').innerHTML = event.target.innerHTML
+    //reloadDemo();
   });
 });
 
