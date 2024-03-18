@@ -26,10 +26,17 @@ a {
 }
 
 .demo-options {
-  border-bottom: 1px solid rgb(232 230 230);
+  
 }
 
-.demo-content {}
+.demo-options .dropdown .label {
+  font-weight: 600;
+}
+
+.demo-content {
+  background-color: rgb(232 230 230);
+  border-radius: 6px;
+}
 
 .demo-content #components-wrapper {
   padding: 2em 0;
@@ -44,7 +51,7 @@ a {
 }
 
 .demo-content #components-wrapper.device-mobile {
-  max-width: 320px;
+  max-width: 350px;
 }
 
 .demo-content #payment-form {
@@ -79,15 +86,17 @@ a {
 }
 
 .dropdown-toggle::after {
+  border: solid black;
+  border-width: 0 1px 1px 0;
   display: inline-block;
+  padding: 3px;
   margin-left: 0.255em;
   vertical-align: 0.255em;
   content: "";
-  border-top: 0.3em solid;
-  border-right: 0.3em solid transparent;
-  border-bottom: 0;
-  border-left: 0.3em solid transparent;
-  margin-top: 0.6rem;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  margin-top: 0.3rem;
+  float: right;
 }
 
 .dropdown-item {
