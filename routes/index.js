@@ -5,6 +5,7 @@ const regions = require('../config/regions')
 const aspects = require('../config/aspects')
 const devices = require('../config/devices')
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { 

@@ -5,6 +5,15 @@
 npm install
 ```
 
+### Environment
+
+CKO's PublicKey and SecretKey need to be set by the environment, for **development**, it is possible to add a `.env` file with the following content:
+
+```
+CKO_PUBLIC_KEY=pk_sbox_...
+CKO_SECRET_KEY=sk_sbox_...
+```
+
 ### Start
 ```
 DEBUG=components-demo:* npm run dev
@@ -27,6 +36,7 @@ Note some files might need to be renamed.
 ```
 - config/                Configuration files
   aspects.js             List of themes with name and appearance
+  devices.js             List of devices for the size
   keys.js                Checkout's Sandbox Public and Secret keys
   regions.js             List of regions with country, lang and currency
 

@@ -1,6 +1,9 @@
 # Dependency directories
 node_modules/
 
+# .env
+.env
+
 # MAC files
 .DS_Store
 
