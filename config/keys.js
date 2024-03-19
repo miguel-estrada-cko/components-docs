@@ -1,9 +1,9 @@
 module.exports = {
     secretKey: process.env.CKO_SECRET_KEY,
 	publicKey: process.env.CKO_PUBLIC_KEY,
-    clientId: 'cli_sexhljunxgqeregcwxrzku6qyy',
-    clientName: 'Falco Shop NAS',
-    entityId: 'ent_cdrphsmc2hdedcogmeyeqjgbm4',
-    entityName: 'Falco Shop UK (Components Demo)',
-    processingChannelId: 'pc_56bsaxgto6mebg4rkugi7ptdsi',
+    clientId: 'cli_oqlzj3lcv33e3al4wgvmbqllqe',
+    clientName: 'Payment Interfaces',
+    entityId: 'ent_v6hqluj32ythfadzeem3avuuwa',
+    entityName: 'Payment Components Demo',
+    processingChannelId: 'pc_rt7pga5vpjbehg7kskhhhard5m',
 }
