@@ -3,6 +3,9 @@ Checkout
 
 Blue: rgb(24 106 255)
 */
+:root {
+  --bs-gutter-x: 0.1rem !important;
+}
 
 body {
   font: 14px "Inter";
@@ -113,4 +116,19 @@ a {
   height: 20px;
   color: rgb(24 106 255);
   margin: 2px 0 1px;
+}
+
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.row>* {
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
 }
