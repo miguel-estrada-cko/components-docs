@@ -64,14 +64,14 @@ module.exports = {
     kw: {
         name: '🇰🇼 Kuwait',
         value: 'KW',
-        locale: 'it',
+        locale: 'en',
         currency: 'KWD',
         shipping: {},
     },
     nl: {
         name: '🇳🇱 Netherlands',
         value: 'NL',
-        locale: 'itnl',
+        locale: 'nl',
         currency: 'EUR',
         shipping: {},
     },
