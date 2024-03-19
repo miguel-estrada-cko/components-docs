@@ -3,9 +3,6 @@ Checkout
 
 Blue: rgb(24 106 255)
 */
-:root {
-  --bs-gutter-x: 0.1rem !important;
-}
 
 body {
   font: 14px "Inter";
